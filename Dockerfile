@@ -5,9 +5,9 @@ RUN apt-get update && apt-get install -y \
     make \
     vim
 
-RUN mkdir /tmp/pagila-hw
-COPY . /tmp/pagila-hw
-WORKDIR /tmp/pagila-hw
+RUN mkdir /tmp/pagila-hw2
+COPY . /tmp/pagila-hw2
+WORKDIR /tmp/pagila-hw2
 
 # copy over the pagila database;
 # we rename the files so that they get executed in the correct order

@@ -1,4 +1,4 @@
-/*
+ /*
  * Management wants to advertise to actors,
  * and needs a list of all actors who are not also customers.
  *
@@ -11,3 +11,4 @@
  * For this problem, you should use the NOT IN clause;
  * in problem 05b you will use the LEFT JOIN clause.
  */
+select a.last_name, a.first_name from actor as a where (a.last_name,a.first_name) not in (select c.last_name, c.first_name from customer as c) order by a.last_name, a.first_name;

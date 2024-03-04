@@ -8,3 +8,17 @@
  * You might find the following stackoverflow answer useful for figuring out the syntax:
  * <https://stackoverflow.com/a/5700744>.
  */
+select rank, title, revenue, sum(revenue) over (order by rank) as "total revenue"
+
+from (
+    select rank() over (order by round(coalesce(sum(p.amount),0),2) desc) as rank, title, round(coalesce(sum(p.amount),0),2) as revenue
+from film
+left join inventory as i using(film_id)
+left join rental as r using(inventory_id)
+left join payment as p using(rental_id)
+GROUP BY
+    ROLLUP (
+title
+    )
+    having title is not null
+    ) as sq order by revenue desc, title;

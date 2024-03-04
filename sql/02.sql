@@ -5,3 +5,4 @@
  * for all films whose rating is one of the two most popular.
  * Use the film table and order by title.
  */
+select film_id,title from film f where rating = 'PG-13' or rating = 'NC-17' order by title;
